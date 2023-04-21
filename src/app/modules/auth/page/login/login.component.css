@@ -1,0 +1,38 @@
+.example-card {
+    width: 400px;
+}
+
+.header {
+    justify-content: center;
+    color: #bdab45;
+
+}
+.button{
+    background-color: #bdab45;
+}
+
+.login {
+    justify-content: center;
+    display: flex;
+    height: max-content;
+    padding-top: 15%;
+}
+
+
+.form-login {
+    display: flex;
+}
+
+.footer {
+    justify-content: center;
+    width: 100%;
+    display: flex;
+}
+
+.footer .button {
+    width: 100%;
+}
+
+.example-full-width {
+    width: 100%;
+}

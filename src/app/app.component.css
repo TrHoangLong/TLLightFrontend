@@ -1,0 +1,6 @@
+.container, .container-lg, .container-md, .container-sm{
+    max-width: 100%;
+}
+.container{
+    background-color: white;
+}

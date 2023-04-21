@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-image: url(./assets/images/energy.svg); background-size: 90%; background-position: center;}
+.redSnackbar {
+    background: #bf0b11;
+    color: white;
+  }
+  
+  .greenSnackbar {
+    background: #bdab45;
+    color: white;
+  }
+  

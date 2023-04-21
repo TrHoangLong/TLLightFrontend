@@ -1,0 +1,34 @@
+<h1 mat-dialog-title>{{title}}</h1>
+
+<div mat-dialog-content>
+    <mat-grid-list cols="3" rowHeight="3:1">
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field appearance="outline">
+                <mat-label>Mã Loại sản phẩm</mat-label>
+                <input matInput [(ngModel)]="categoryId" required [disabled]="action === ACTION_UPDATE">
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field appearance="outline">
+                <mat-label>Loại sản phẩm</mat-label>
+                <input matInput [(ngModel)]="categoryName" required>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field appearance="outline">
+                <mat-label>Trạng thái</mat-label>
+                <mat-select [(value)]="status" class="select">
+                    <mat-option>None</mat-option>
+                    <mat-option required *ngFor="let status of statusList" value="{{status.value}}">{{status.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
+<div mat-dialog-actions align="end">
+    <button mat-stroked-button class="btnNo" (click)="onNoClick()">Đóng</button>
+    <button mat-raised-button (click)="onYesClick()" class="btnYes" color="primary">{{titleYes}}</button>
+</div>

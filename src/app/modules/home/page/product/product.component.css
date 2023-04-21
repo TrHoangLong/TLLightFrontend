@@ -1,0 +1,57 @@
+.title {
+  font-size: 24px;
+}
+
+.btn {
+  background-color: #bdab45;
+  margin-right: 15px;
+  color: whitesmoke;
+}
+
+.btnActioon {
+  background-color: #bdab45;
+  color: whitesmoke;
+}
+
+.form-field {
+  height: 30px;
+  margin-right: 30px;
+}
+
+.example-container {
+  height: 400px;
+  /* min-width: 1500px; */
+  /* max-width: 100%; */
+  overflow: auto;
+}
+
+.action {
+  text-align: center;
+}
+
+table {
+  min-width: 100%;
+}
+
+.paginator {}
+
+.mat-form-field {
+  max-width: 160px;
+}
+
+th.mat-header-cell:last-of-type {
+  padding-right: 5px;
+}
+
+th {
+  position: fixed;
+  background-color: whitesmoke;
+}
+
+td,
+th {
+  min-width: 12%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

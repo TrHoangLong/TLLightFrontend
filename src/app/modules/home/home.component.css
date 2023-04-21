@@ -1,0 +1,16 @@
+::ng-deep .success{
+    color:white;
+    background: #3f51b5;
+}
+::ng-deep .fail{
+    color:white;
+    background: #f44336;
+}
+.header{
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+}
+button{
+    margin: 15px;
+}

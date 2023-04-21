@@ -1,0 +1,87 @@
+<h1 mat-dialog-title>{{title}}</h1>
+
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" opened>
+    <mat-grid-list cols="3" rowHeight="3:1">
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Mã sản phẩm</mat-label>
+          <input matInput [(ngModel)]="productId" required [disabled]="action === ACTION_UPDATE">
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Loại sản phẩm</mat-label>
+          <mat-select [(value)]="categoryId" class="select">
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let category of categoryList"
+              value="{{category.categoryId}}">{{category.categoryName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Tên sản phẩm</mat-label>
+          <input matInput [(ngModel)]="productName" required>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Giá bán</mat-label>
+          <input matInput [(ngModel)]="productPrice" required>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Số lượng tồn</mat-label>
+          <input matInput [(ngModel)]="quantity" required>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Trạng thái</mat-label>
+          <mat-select [(value)]="status" class="select">
+            <mat-option>None</mat-option>
+            <mat-option required *ngFor="let status of statusList" value="{{status.value}}">{{status.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-form-field appearance="outline" class="description">
+      <mat-label>Mô tả</mat-label>
+      <!-- <input matInput [(ngModel)]="description" required> -->
+      <textarea matInput [(ngModel)]="description" required></textarea>
+    </mat-form-field>
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="idProductImage">
+      <div class="idCardImageDetail">
+        <div>
+          <mat-toolbar>
+            <input matInput [(ngModel)]="fileAttr1" readonly name="name" />
+            <button mat-flat-button (click)="openChooseFile('uploadFile1')">
+              Chọn
+            </button>
+          </mat-toolbar>
+          <!-- Fetch selected filed on change -->
+          <input hidden type="file" #fileInput1 id="uploadFile1" (change)="uploadFile($event)" name="uploadFile1"
+            multiple="multiple" accept="image/*" />
+        </div>
+        <div>
+          <img (click)="openImageZoom(previews1)" [src]="previews1" class="preview1">
+        </div>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<div mat-dialog-actions align="end">
+  <button mat-stroked-button class="btnNo" (click)="onNoClick()">Đóng</button>
+  <button mat-raised-button (click)="onYesClick()" class="btnYes" color="primary">{{titleYes}}</button>
+</div>

@@ -1,0 +1,47 @@
+.btnNo {
+    margin-right: 30px;
+    background-color: #bf0b11;
+    color: whitesmoke;
+}
+
+.btnYes {
+    background-color: #bdab45;
+    color: whitesmoke;
+}
+
+/* mat-grid-list mat-grid-tile mat-form-field {
+    margin: 30px;
+    width: 200px;
+} */
+
+mat-sidenav {
+    width: 70%;
+}
+
+mat-sidenav-content {
+    width: 30%;
+    height: 300px;
+}
+
+.idCardImage {
+    height: 100%;
+    text-align: center;
+}
+
+.idCardImageDetail {
+    height: 50%;
+}
+
+.mat-toolbar {
+    height: 50px;
+}
+
+img {
+    height: 197px;
+    width: 285px;
+}
+
+.description {
+    height: 80px;
+    width: 99%;
+}

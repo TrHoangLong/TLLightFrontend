@@ -1,0 +1,40 @@
+<mat-toolbar class="header">
+    <div class="col home">
+        <img class="logoImage" src="../../../assets/images/logheader.svg" alt="" (click)="routerMenu('home')">
+    </div>
+    <div class="col-9 menu">
+        <button class="menuItem" mat-button [matMenuTriggerFor]="aboveMenu">Sản phẩm</button>
+        <mat-menu #aboveMenu="matMenu" yPosition="above">
+            <button mat-menu-item (click)="routerMenu('product-categories')">Loại sản phẩm</button>
+            <button mat-menu-item (click)="routerMenu('product')">Danh sách sản phẩm</button>
+        </mat-menu>
+
+        <button class="menuItem" mat-button [matMenuTriggerFor]="beforeMenu">Khách hàng</button>
+        <mat-menu #beforeMenu="matMenu" xPosition="before">
+            <button mat-menu-item (click)="routerMenu('customer-user')">Tài khoản KH</button>
+            <button mat-menu-item (click)="routerMenu('cust-card')">Giỏ hàng KH</button>
+            <button mat-menu-item (click)="routerMenu('cust-orders')">Đơn hàng KH</button>
+            <button mat-menu-item (click)="routerMenu('shipping')">Thông tin giao hàng</button>
+        </mat-menu>
+
+        <button class="menuItem" mat-button [matMenuTriggerFor]="belowMenu">Đặt hàng</button>
+        <mat-menu #belowMenu="matMenu">
+            <button mat-menu-item (click)="routerMenu('order')">Đặt hàng</button>
+            <button mat-menu-item (click)="routerMenu('sys-card')">Giỏ hàng</button>
+            <button mat-menu-item (click)="routerMenu('sys-orders')">Đơn hàng</button>
+        </mat-menu>
+
+        <button class="menuItem" mat-button [matMenuTriggerFor]="afterMenu">Hệ thống</button>
+        <mat-menu #afterMenu="matMenu" xPosition="after">
+            <button mat-menu-item (click)="routerMenu('sys-users')">Tài khoản hệ thống</button>
+        </mat-menu>
+    </div>
+    <div class="col user">
+        <button mat-button class="material-icons" aria-label="Logout" [matMenuTriggerFor]="info">
+            <mat-icon>account_circle</mat-icon>
+        </button>
+        <mat-menu #info="matMenu" yPosition="below">
+            <button mat-menu-item (click)="logout()"><mat-icon>logout</mat-icon>Logout</button>
+        </mat-menu>
+    </div>
+</mat-toolbar>

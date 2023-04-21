@@ -1,0 +1,109 @@
+<span class="title">Danh sách loại sản phẩm</span>
+<br>
+<hr>
+
+<div class="content">
+    <form class="form">
+
+        <mat-form-field class="filter-value form-field" appearance="outline">
+            <mat-label>Loại sản phẩm</mat-label>
+            <mat-select [(value)]="categoryId" class="select">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let category of categorList"
+                    value="{{category.categoryId}}">{{category.categoryName}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="filter-value form-field" appearance="outline">
+            <mat-label>Trạng thái</mat-label>
+            <mat-select [(value)]="statusSelected" class="select">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let status of statusList" value="{{status.value}}">{{status.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <button mat-raised-button class="btn" (click)="search()">
+            <mat-icon>search</mat-icon>Tìm kiếm
+        </button>
+
+        <button mat-raised-button class="btn" (click)="insert()">Thêm</button>
+
+        <button class="editButtons btn" mat-raised-button (click)="Input()">Nhập Excel</button>
+        <input [hidden]="true" id="importExcel" type="file" (change)="onFileChange($event)" multiple="false" />
+    </form>
+    
+    <br>
+    <br>
+
+    <div class="example-container mat-elevation-z8 table">
+        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef class="xs-column action"> Hành động
+                </th>
+                <td mat-cell *matCellDef="let element" class="action">
+                    <button class="meniTtem btnActioon" mat-raised-button [matMenuTriggerFor]="menu">Hành động</button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="update(element)">Sửa</button>
+                    </mat-menu>
+                </td>
+                <td class="md-column action" mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="categoryId">
+                <th class="md-column id" mat-header-cell *matHeaderCellDef mat-sort-header>Mã loại sp</th>
+                <td class="md-column id" mat-cell *matCellDef="let element">{{ element.categoryId}}</td>
+                <td class="md-column id" mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="categoryName">
+                <th class="md-column " mat-header-cell *matHeaderCellDef mat-sort-header>Loại sản phẩm</th>
+                <td class="md-column name" mat-cell *matCellDef="let element">{{ element.categoryName}}</td>
+                <td class="md-column name" mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="createdUserId">
+                <th class="md-column " mat-header-cell *matHeaderCellDef mat-sort-header>Người tạo</th>
+                <td class="md-column gender" mat-cell *matCellDef="let element">{{element.createdUserId}}</td>
+                <td class="md-column gender" mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="createdTime">
+                <th class="xs-column " mat-header-cell *matHeaderCellDef mat-sort-header>Thời gian tạo</th>
+                <td class="xs-column name" mat-cell *matCellDef="let element">{{ element.createdTime | date: 'dd/MM/yyyy
+                    HH:mm:ss '}}</td>
+                <td class="xs-column name" mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="updatedTime">
+                <th class="xs-column" mat-header-cell *matHeaderCellDef mat-sort-header>Thời gian sửa</th>
+                <td class="xs-column name" mat-cell *matCellDef="let element">{{ element.updatedTime | date: 'dd/MM/yyyy
+                    HH:mm:ss '}}</td>
+                <td class="xs-column name" mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="updatedUserId">
+                <th class="xs-column" mat-header-cell *matHeaderCellDef mat-sort-header>Người sửa</th>
+                <td class="xs-column gender" mat-cell *matCellDef="let element">{{element.updatedUserId}}</td>
+                <td class="xs-column gender" mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+                <th class="xs-column " mat-header-cell *matHeaderCellDef mat-sort-header>Trạng thái</th>
+                <td class="xs-column name" mat-cell *matCellDef="let element">{{getStatus(element.status).name}}
+                </td>
+                <td class="xs-column name" mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true;"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr>
+
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" style="text-align: center;" colspan="17">Không tồn tại dữ liệu</td>
+            </tr>
+        </table>
+        <mat-paginator class="paginator" [pageSize]="paginatorSize[0]"
+            [pageSizeOptions]="paginatorSize"></mat-paginator>
+    </div>
+</div>

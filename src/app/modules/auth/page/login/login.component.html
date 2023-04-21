@@ -1,0 +1,27 @@
+<div class="container-fluid login">
+    <mat-card class="example-card mat-elevation-z8">
+        <mat-card-header class="header">
+            <mat-card-title>TL-LIGHT</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="form-login">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Tài khoản: </mat-label>
+                    <br>
+                    <input [(ngModel)] = "username" type="text" matInput (keyup.enter)="login()" required>
+                </mat-form-field>
+            </div>
+            <div class="form-login">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Mật khẩu: </mat-label>
+                    <br>
+                    <input matInput [(ngModel)] = "password" [type]="hide ? 'password' : 'text'" (keyup.enter)="login()" required>
+                    <mat-icon class="hide-pass" matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </mat-form-field>
+            </div>
+        </mat-card-content>
+        <mat-card-actions class="footer">
+            <button mat-raised-button class="button" (click)="login()">Đăng nhập</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

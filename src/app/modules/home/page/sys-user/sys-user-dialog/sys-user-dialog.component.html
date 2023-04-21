@@ -1,0 +1,94 @@
+<h1 mat-dialog-title>{{title}}</h1>
+
+<div mat-dialog-content *ngIf="action !== ACTION_DELETE">
+    <mat-grid-list cols="2" rowHeight="3:1">
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field appearance="outline">
+                <mat-label>Tài khoản</mat-label>
+                <input matInput [(ngModel)]="sysUserId" required>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field appearance="outline">
+                <mat-label>Mật khẩu</mat-label>
+                <input matInput [(ngModel)]="password" required>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field appearance="outline">
+                <mat-label>Tên tài khoản</mat-label>
+                <input matInput [(ngModel)]="userName" required>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field appearance="outline">
+                <mat-label>Số điện thoại</mat-label>
+                <input matInput [(ngModel)]="mobileNo" required>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field appearance="outline">
+                <mat-label>Giới tính</mat-label>
+                <mat-select [(value)]="gender" class="select">
+                    <mat-option>None</mat-option>
+                    <mat-option required *ngFor="let gender of genderList" value="{{gender.value}}">{{gender.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-grid-tile>
+        
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field appearance="outline">
+                <mat-label>Ngày sinh</mat-label>
+                <input matInput [matDatepicker]="picker" placeholder="Chọn" aria-label="Ngày sinh"
+                    [(ngModel)]="birthday" name="birthday">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </mat-grid-tile>
+        
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput [(ngModel)]="email" required>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field appearance="outline">
+                <mat-label>Địa chỉ</mat-label>
+                <input matInput [(ngModel)]="address" required>
+            </mat-form-field>
+        </mat-grid-tile>
+        
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field appearance="outline">
+                <mat-label>Trạng thái</mat-label>
+                <mat-select [(value)]="status" class="select">
+                    <mat-option>None</mat-option>
+                    <mat-option required *ngFor="let status of statusList" value="{{status.value}}">{{status.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field appearance="outline">
+                <mat-label>Ghi chú</mat-label>
+                <input matInput [(ngModel)]="remarks">
+            </mat-form-field>
+        </mat-grid-tile>
+
+    </mat-grid-list>
+</div>
+
+<div *ngIf="action === ACTION_DELETE">
+    {{message}}
+</div>
+
+<div mat-dialog-actions align="end">
+    <button mat-stroked-button class="btnNo" (click)="onNoClick()">Đóng</button>
+    <button mat-raised-button (click)="onYesClick()" class="btnYes" color="primary">{{titleYes}}</button>
+</div>

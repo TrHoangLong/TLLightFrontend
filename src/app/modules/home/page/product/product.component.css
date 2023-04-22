@@ -19,7 +19,7 @@
 }
 
 .example-container {
-  height: 400px;
+  height: 480px;
   /* min-width: 1500px; */
   /* max-width: 100%; */
   overflow: auto;
@@ -31,6 +31,7 @@
 
 table {
   min-width: 100%;
+  height: 100%;
 }
 
 .paginator {}

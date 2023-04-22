@@ -76,7 +76,7 @@
 
             <ng-container matColumnDef="productPrice">
                 <th class="md-column " mat-header-cell *matHeaderCellDef mat-sort-header>Giá bán</th>
-                <td class="md-column name" mat-cell *matCellDef="let element">{{ element.productPrice}}</td>
+                <td class="md-column name" mat-cell *matCellDef="let element">{{ element.productPrice | number: '1.0-0'}}</td>
                 <td class="md-column name" mat-footer-cell *matFooterCellDef> </td>
             </ng-container>
 
@@ -133,7 +133,5 @@
                 <td class="mat-cell" style="text-align: center;" colspan="17">Không tồn tại dữ liệu</td>
             </tr>
         </table>
-        <mat-paginator class="paginator" [pageSize]="paginatorSize[0]"
-            [pageSizeOptions]="paginatorSize"></mat-paginator>
     </div>
 </div>

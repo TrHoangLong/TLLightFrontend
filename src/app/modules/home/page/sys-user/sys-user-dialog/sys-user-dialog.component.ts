@@ -3,7 +3,7 @@ import { RoleService } from 'src/app/share/service/role.service';
 import { UtilsService } from 'src/app/share/service/utils.service';
 import { SysService } from 'src/app/core/service/sys.service';
 import { SysUser } from 'src/app/data/schema/sys/sys-user';
-import { SYS_USER_STATUS, SYS_USER_GENDER } from 'src/app/core/constants/sys-user';
+import { SYS_USER_STATUS, SYS_USER_GENDER, SYS_USER_ROLE } from 'src/app/core/constants/sys-user';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl } from '@angular/forms';
 import { SysUserComponent } from '../sys-user.component';
@@ -20,15 +20,17 @@ export class SysUserDialogComponent implements OnInit {
   action: string;
 
   statusList: any;
-  genderList: any;
+  roleList: any;
   hide = true;
 
   sysUserId: string;
   userName: string;
+  role: number;
   mobileNo: string;
   gender: number;
   birthday: Date;
   email: string;
+
   password: string;
   status: number;
   address: string;
@@ -45,7 +47,8 @@ export class SysUserDialogComponent implements OnInit {
     private sysService: SysService) {
     this.action = data.action;
     this.statusList = SYS_USER_STATUS;
-    this.genderList = SYS_USER_GENDER;
+    this.roleList = SYS_USER_ROLE;
+
 
     if (this.action === this.ACTION_ADD) {
       this.title = 'Thêm Tài khoản';
@@ -84,18 +87,18 @@ export class SysUserDialogComponent implements OnInit {
     return '';
   }
 
-  getGender(status: any): any {
-    if (this.genderList == undefined) {
+  getRole(status: any): any {
+    if (this.roleList == undefined) {
       return '';
     }
     if (typeof status === 'string') {
-      for (const data of this.genderList) {
+      for (const data of this.roleList) {
         if (data.value === status) {
           return data;
         }
       }
     } else {
-      for (const data of this.genderList) {
+      for (const data of this.roleList) {
         if (data.data === status) {
           return data;
         }
@@ -109,13 +112,9 @@ export class SysUserDialogComponent implements OnInit {
       const payload = {
         sysUserId: this.sysUserId,
         userName: this.userName,
-        mobileNo: this.mobileNo,
-        gender: this.getGender(this.gender).data,
-        birthday: this.birthday,
-        email: this.email,
+        role: this.getRole(this.role).data,
         password: this.password,
         status: this.getStatus(this.status).data,
-        address: this.address,
         remarks: this.remarks
       }
 

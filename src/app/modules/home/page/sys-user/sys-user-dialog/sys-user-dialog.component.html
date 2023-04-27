@@ -25,42 +25,11 @@
 
         <mat-grid-tile [colspan]="1" [rowspan]="1">
             <mat-form-field appearance="outline">
-                <mat-label>Số điện thoại</mat-label>
-                <input matInput [(ngModel)]="mobileNo" required>
-            </mat-form-field>
-        </mat-grid-tile>
-
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <mat-form-field appearance="outline">
-                <mat-label>Giới tính</mat-label>
-                <mat-select [(value)]="gender" class="select">
+                <mat-label>Role</mat-label>
+                <mat-select [(value)]="role" class="select">
                     <mat-option>None</mat-option>
-                    <mat-option required *ngFor="let gender of genderList" value="{{gender.value}}">{{gender.name}}</mat-option>
+                    <mat-option required *ngFor="let role of roleList" value="{{role.value}}">{{role.name}}</mat-option>
                 </mat-select>
-            </mat-form-field>
-        </mat-grid-tile>
-        
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <mat-form-field appearance="outline">
-                <mat-label>Ngày sinh</mat-label>
-                <input matInput [matDatepicker]="picker" placeholder="Chọn" aria-label="Ngày sinh"
-                    [(ngModel)]="birthday" name="birthday">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-        </mat-grid-tile>
-        
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <mat-form-field appearance="outline">
-                <mat-label>Email</mat-label>
-                <input matInput [(ngModel)]="email" required>
-            </mat-form-field>
-        </mat-grid-tile>
-
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <mat-form-field appearance="outline">
-                <mat-label>Địa chỉ</mat-label>
-                <input matInput [(ngModel)]="address" required>
             </mat-form-field>
         </mat-grid-tile>
         

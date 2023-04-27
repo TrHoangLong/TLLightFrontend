@@ -51,8 +51,12 @@ th {
 
 td,
 th {
-  min-width: 12%;
+  min-width: 200px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.description {
+  padding-right: 15px;
 }

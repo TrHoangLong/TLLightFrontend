@@ -81,7 +81,7 @@
             </ng-container>
 
             <ng-container matColumnDef="description">
-                <th class="md-column id" mat-header-cell *matHeaderCellDef mat-sort-header>Mô tả</th>
+                <th class="md-column id description" mat-header-cell *matHeaderCellDef mat-sort-header>Mô tả</th>
                 <td class="md-column id description" mat-cell *matCellDef="let element"><p *ngFor="let item of getDescription(element.description)">{{item}}</p></td>
                 <td class="md-column id" mat-footer-cell *matFooterCellDef> </td>
             </ng-container>

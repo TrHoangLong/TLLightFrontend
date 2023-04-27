@@ -11,7 +11,7 @@ import { RoleService } from 'src/app/share/service/role.service';
 import { UtilsService } from 'src/app/share/service/utils.service';
 import { SysService } from 'src/app/core/service/sys.service';
 import { SysUser } from 'src/app/data/schema/sys/sys-user';
-import { SYS_USER_STATUS, SYS_USER_GENDER } from 'src/app/core/constants/sys-user';
+import { SYS_USER_STATUS, SYS_USER_ROLE } from 'src/app/core/constants/sys-user';
 import { SysUserDialogComponent } from './sys-user-dialog/sys-user-dialog.component';
 
 @Component({
@@ -21,7 +21,7 @@ import { SysUserDialogComponent } from './sys-user-dialog/sys-user-dialog.compon
 })
 export class SysUserComponent implements OnInit {
 
-  displayedColumns: string[] = ['action', 'sysUserId', 'userName', 'gender', 'mobileNo', 'email', 'address', 'status', 'remarks'];
+  displayedColumns: string[] = ['action', 'sysUserId', 'userName', 'role', 'status', 'remarks'];
   dataSource: MatTableDataSource<SysUser>;
 
   paginatorSize: number[] = PAGINATOR_SIZE;
@@ -32,13 +32,14 @@ export class SysUserComponent implements OnInit {
   statusSelected: number;
   statusList: any;
   genderList: any;
+  roleList: any;
 
   constructor(private dialog: MatDialog,
     private roleService: RoleService,
     private utilsService: UtilsService,
     private sysService: SysService) {
     this.statusList = SYS_USER_STATUS;
-    this.genderList = SYS_USER_GENDER;
+    this.roleList = SYS_USER_ROLE;
   }
 
   ngOnInit(): void {
@@ -81,18 +82,18 @@ export class SysUserComponent implements OnInit {
     return '';
   }
 
-  getGender(status: any): any {
-    if (this.genderList == undefined) {
+  getRole(status: any): any {
+    if (this.roleList == undefined) {
       return '';
     }
     if (typeof status === 'string') {
-      for (const data of this.genderList) {
+      for (const data of this.roleList) {
         if (data.value === status) {
           return data;
         }
       }
     } else {
-      for (const data of this.genderList) {
+      for (const data of this.roleList) {
         if (data.data === status) {
           return data;
         }
@@ -103,7 +104,6 @@ export class SysUserComponent implements OnInit {
 
   insert() {
     const dialogRef = this.dialog.open(SysUserDialogComponent, {
-      height: '500px',
       width: '500px',
       data: {
         action: 'add'

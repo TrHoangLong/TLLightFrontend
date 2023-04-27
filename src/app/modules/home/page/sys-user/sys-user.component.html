@@ -48,28 +48,10 @@
                 <td class="md-column name" mat-footer-cell *matFooterCellDef> </td>
             </ng-container>
 
-            <ng-container matColumnDef="gender">
+            <ng-container matColumnDef="role">
                 <th class="md-column " mat-header-cell *matHeaderCellDef mat-sort-header>Giới tính</th>
-                <td class="md-column gender" mat-cell *matCellDef="let element">{{ getGender(element.gender).name}}</td>
+                <td class="md-column gender" mat-cell *matCellDef="let element">{{ getRole(element.role).name}}</td>
                 <td class="md-column gender" mat-footer-cell *matFooterCellDef> </td>
-            </ng-container>
-
-            <ng-container matColumnDef="mobileNo">
-                <th class="xs-column " mat-header-cell *matHeaderCellDef mat-sort-header>Số điện thoại</th>
-                <td class="xs-column name" mat-cell *matCellDef="let element">{{ element.mobileNo}}</td>
-                <td class="xs-column name" mat-footer-cell *matFooterCellDef> </td>
-            </ng-container>
-
-            <ng-container matColumnDef="email">
-                <th class="xs-column" mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
-                <td class="xs-column mail" mat-cell *matCellDef="let element">{{ element.email}}</td>
-                <td class="xs-column mail" mat-footer-cell *matFooterCellDef> </td>
-            </ng-container>
-
-            <ng-container matColumnDef="address">
-                <th class="xs-column" mat-header-cell *matHeaderCellDef mat-sort-header>Địa chỉ </th>
-                <td class="xs-column mail" mat-cell *matCellDef="let element">{{element.address}}</td>
-                <td class="xs-column mail" mat-footer-cell *matFooterCellDef> </td>
             </ng-container>
 
             <ng-container matColumnDef="status">

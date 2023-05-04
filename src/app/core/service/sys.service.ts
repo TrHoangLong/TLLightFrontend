@@ -45,6 +45,59 @@ export class SysService {
     );
   }
 
+  addCart(payload: any): Observable<any> {
+    return this.http.post<Response>(HOST_SYSTEM + 'syscart/insert', payload, this.httpOptions).pipe(
+      catchError(this.handleError('insert syscart', payload))
+    );
+  }
+
+  updateCart(payload: any): Observable<any> {
+    return this.http.post<Response>(HOST_SYSTEM + 'syscart/update', payload, this.httpOptions).pipe(
+      catchError(this.handleError('update syscart', payload))
+    );
+  }
+
+  deleteCart(payload: any): Observable<any> {
+    return this.http.post<Response>(HOST_SYSTEM + 'syscart/delete', payload, this.httpOptions).pipe(
+      catchError(this.handleError('delete syscart', payload))
+    );
+  }
+
+  orderCart(payload: any): Observable<any> {
+    return this.http.post<Response>(HOST_SYSTEM + 'syscart/order', payload, this.httpOptions).pipe(
+      catchError(this.handleError('delete syscart', payload))
+    );
+  }
+
+  getCart(payload: any): Observable<any> {
+    return this.http.post<Response>(HOST_SYSTEM + 'syscart/get', payload, this.httpOptions).pipe(
+      catchError(this.handleError('delete syscart', payload))
+    );
+  }
+
+  updateStatusSysOrder(payload: any): Observable<any> {
+    return this.http.post<Response>(HOST_SYSTEM + 'sysorder/updatestatus', payload, this.httpOptions).pipe(
+      catchError(this.handleError('updatestatus sysorder', payload))
+    );
+  }
+
+  orderSysOrder(payload: any): Observable<any> {
+    return this.http.post<Response>(HOST_SYSTEM + 'sysorder/order', payload, this.httpOptions).pipe(
+      catchError(this.handleError('order sysorder', payload))
+    );
+  }
+
+  getSysOrder(payload: any): Observable<any> {
+    return this.http.post<Response>(HOST_SYSTEM + 'sysorder/get', payload, this.httpOptions).pipe(
+      catchError(this.handleError('get sysorder', payload))
+    );
+  }
+
+  cancelSysOrder(payload: any): Observable<any> {
+    return this.http.post<Response>(HOST_SYSTEM + 'sysorder/cancel', payload, this.httpOptions).pipe(
+      catchError(this.handleError('cancel sysorder', payload))
+    );
+  }
 
   private handleError<T>(operation = 'operation', result?): any {
     return (error: any): Observable<T> => {

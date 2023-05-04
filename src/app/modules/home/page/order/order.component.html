@@ -1,1 +1,49 @@
-<p>order works!</p>
+<span class="title">Đặt hàng</span>
+<br>
+<hr>
+<div class="content">
+    <mat-sidenav-container>
+        <mat-sidenav mode="side" opened>
+            <h2>Loại sản phẩm</h2>
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Loại sản phẩm</mat-label>
+                    <mat-select [(value)]="categoryId" class="select">
+                        <mat-option>None</mat-option>
+                        <mat-option *ngFor="let category of categoryList"
+                            value="{{category.categoryId}}">{{category.categoryName}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <button mat-raised-button class="btn" (click)="search()">
+                <mat-icon>search</mat-icon>
+            </button>
+        </mat-sidenav>
+
+        <mat-sidenav-content>
+            <mat-grid-list cols="4" rowHeight="1:1">
+                <mat-grid-tile *ngFor="let product of productListSearch">
+                    <mat-card class="example-card">
+                        <mat-card-header style="height: 30%;">
+                            <mat-card-title style="font-size: 16px;">{{product.productName}}</mat-card-title>
+                            <mat-card-subtitle>Giá bán: {{product.productPrice}}</mat-card-subtitle>
+                            <mat-card-subtitle><mat-icon style="cursor: pointer;" (click)="descriptionDetail(product.description)">visibility</mat-icon></mat-card-subtitle>
+                        </mat-card-header>
+                        <div class="boxImage">
+                            <img (click)="openImageZoom('assets/images/product/' + product.productImage)"
+                                [src]="'assets/images/product/' + product.productImage" class="preview1" class="image">
+                        </div>
+                        <br>
+                        <div class="boxButton">
+                            <button mat-stroked-button class="btnCart" (click)="
+                            addCart(product)">
+                                <mat-icon>add_shopping_cart</mat-icon>
+                            </button>
+                            <button mat-raised-button class="btn" (click)="order(product)">Đặt hàng</button>
+                        </div>
+                    </mat-card>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

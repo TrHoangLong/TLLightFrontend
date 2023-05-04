@@ -39,6 +39,10 @@ import { ProductCategoriesDialogComponent } from './page/product-categories/prod
 import { ProductDialogComponent } from './page/product/product-dialog/product-dialog.component';
 import { ProductZoomImageComponent } from './page/product/product-dialog/product-zoom-image/product-zoom-image.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { ProductDescribeComponent } from './page/order/product-describe/product-describe.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { SysCardDialogComponent } from './page/sys-card/sys-card-dialog/sys-card-dialog.component';
+import { SysOrdersDialogComponent } from './page/sys-orders/sys-orders-dialog/sys-orders-dialog.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +61,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     ProductCategoriesDialogComponent,
     ProductDialogComponent,
     ProductZoomImageComponent,
+    ProductDescribeComponent,
+    SysCardDialogComponent,
+    SysOrdersDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -81,7 +88,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatGridListModule,
     MatMenuModule,
     MatDatepickerModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatCheckboxModule
   ]
 })
 export class HomeModule { }

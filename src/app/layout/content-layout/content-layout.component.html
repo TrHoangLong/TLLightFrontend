@@ -1,28 +1,6 @@
 <div class="example-container">
-    <!-- <mat-drawer #drawer mode="side" class="mat-elevation-z8" [opened]="sideNavOpen">
-        <mat-list class="list isExpanded">
-            <mat-list-item class="btn" [ngClass]="{'isActive': selectedMenu == 'mstSec'}" (click)="onClick('home')">
-                <mat-icon mat-list-icon (click)="onClick('home')">home</mat-icon>
-                <span (click)="onClick('home')">Trang chủ</span>
-            </mat-list-item>
-            <mat-list-item class="btn" [ngClass]="{'isActive': selectedMenu == 'mstSec'}" (click)="onClick('mstSec')">
-                <mat-icon mat-list-icon (click)="onClick('mstSec')">tabel_view</mat-icon>
-                <span (click)="onClick('mstSec')">Mã CK CS</span>
-            </mat-list-item>
-            <mat-list-item class="btn" [ngClass]="{'isActive': selectedMenu == 'chart'}" (click)="onClick('chart')">
-                <mat-icon mat-list-icon (click)="onClick('chart')">show_chart</mat-icon>
-                <span (click)="onClick('chart')">Chart</span>
-            </mat-list-item>
-            <mat-list-item class="btn logout" (click)="logout()">
-                <mat-icon mat-list-icon (click)="logout()">logout</mat-icon>
-                <span (click)="logout()">Logout</span>
-            </mat-list-item>
-        </mat-list>
-    </mat-drawer>
-    <mat-drawer-content> -->
-        <app-header (sideNav)="routerMenu($event)" class="header"></app-header>
-        <div class="body">
-            <router-outlet></router-outlet>
-        </div>
-    <!-- </mat-drawer-content> -->
+    <app-header (sideNav)="routerMenu($event)" class="header"></app-header>
+    <div class="body">
+        <router-outlet></router-outlet>
+    </div>
 </div>

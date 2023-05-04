@@ -1,0 +1,58 @@
+<h1 mat-dialog-title>{{title}}</h1>
+
+<div *ngIf="action === ACTION_DETAIL">
+    <h3 *ngFor="let item of getDescription(description)">{{item}}</h3>
+</div>
+
+<div *ngIf="action !== ACTION_DETAIL">
+    <div mat-dialog-content>
+        <mat-grid-list cols="3" rowHeight="2:1" class="content">
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Sản phẩm</mat-label>
+                    <input matInput [(ngModel)]="productName" disabled required>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Giá bán</mat-label>
+                    <input matInput [(ngModel)]="productPrice" disabled required>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Số lượng</mat-label>
+                    <input matInput [(ngModel)]="quantity" required>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile *ngIf="action === ACTION_ORDER">
+                <mat-form-field appearance="outline">
+                    <mat-label>Tên khách hàng</mat-label>
+                    <input matInput [(ngModel)]="custName" required>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile *ngIf="action === ACTION_ORDER">
+                <mat-form-field appearance="outline">
+                    <mat-label>Địa chỉ khách hàng</mat-label>
+                    <input matInput [(ngModel)]="address" required>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile *ngIf="action === ACTION_ORDER">
+                <mat-form-field appearance="outline">
+                    <mat-label>Số điện thoại</mat-label>
+                    <input matInput [(ngModel)]="mobileNo" required>
+                </mat-form-field>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+    <br>
+    <div mat-dialog-actions align="end">
+        <button mat-stroked-button class="btnNo" (click)="onNoClick()">Đóng</button>
+        <button mat-raised-button (click)="onYesClick()" class="btnYes" color="primary">{{titleYes}}</button>
+    </div>
+</div>

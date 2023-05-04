@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit {
           this.utilsService.processResponseError(response, "Đăng nhập thành công");
         }
         else {
-          this.utilsService.processResponseError(response, 'Lỗi: ' + response.errorMsg);
+          this.utilsService.processResponseError(response, 'Lỗi: ' + "Đăng nhập không thành công");
         }
       });
   }

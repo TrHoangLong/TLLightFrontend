@@ -11,6 +11,8 @@ import { ShippingComponent } from './page/shipping/shipping.component';
 import { CustCardComponent } from './page/cust-card/cust-card.component';
 import { CustOrdersComponent } from './page/cust-orders/cust-orders.component';
 import { OrderComponent } from './page/order/order.component';
+import { SysOrdersHistComponent } from './page/sys-orders-hist/sys-orders-hist.component';
+import { CustOrdersHistComponent } from './page/cust-orders-hist/cust-orders-hist.component';
 
 const routes: Routes =[
     {
@@ -64,6 +66,14 @@ const routes: Routes =[
             {
                 path: 'sys-users',
                 component: SysUserComponent
+            },
+            {
+                path: 'sys-orders-hist',
+                component: SysOrdersHistComponent
+            },
+            {
+                path: 'cust-orders-hist',
+                component: CustOrdersHistComponent
             }
         ]
       }

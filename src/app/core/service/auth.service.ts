@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClient, HttpEvent, HttpHeaders } from '@angular/common/http';
-import { HOST_AUTH} from '../constants/api';
+import { HOST_AUTH } from '../constants/api';
 import { AuthLoginInfo } from '../../data/schema/auth/login';
 import { User } from '../../data/schema/auth/user'
 import { Response } from '../../data/schema/response';
@@ -33,10 +33,10 @@ export class AuthService {
   }
   logout(token: string): Observable<any> {
     const header = {
-        'content-type': 'application/json',
-        Authorization: token
+      'content-type': 'application/json',
+      Authorization: token
     };
     this.httpOptions.headers = new HttpHeaders(header);
     return this.http.post<string>(this.logoutURL, {}, this.httpOptions);
-}
+  }
 }

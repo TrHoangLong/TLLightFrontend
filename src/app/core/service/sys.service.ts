@@ -99,6 +99,18 @@ export class SysService {
     );
   }
 
+  getHistSysOrder(payload: any): Observable<any> {
+    return this.http.post<Response>(HOST_SYSTEM + 'sysorderhist/get', payload, this.httpOptions).pipe(
+      catchError(this.handleError('get sysorderhist', payload))
+    );
+  }
+
+  closeDateSystem(): Observable<any> {
+    return this.http.post<Response>(HOST_SYSTEM + 'system/closedate', {}, this.httpOptions).pipe(
+      catchError(this.handleError('get sysorderhist', {}))
+    );
+  }
+
   private handleError<T>(operation = 'operation', result?): any {
     return (error: any): Observable<T> => {
       // TODO: send the error to remote logging infrastructure

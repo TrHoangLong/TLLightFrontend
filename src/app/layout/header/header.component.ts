@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { AuthService } from 'src/app/core/service/auth.service';
 import { RoleService } from 'src/app/share/service/role.service';
+import { SysService } from 'src/app/core/service/sys.service';
 import { Router } from '@angular/router';
+import { UtilsService } from 'src/app/share/service/utils.service';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +17,9 @@ export class HeaderComponent implements OnInit {
 
   constructor(private router: Router,
     private roleService: RoleService,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private sysService: SysService,
+    private utilsService: UtilsService) { }
 
   ngOnInit(): void {
   }
@@ -31,5 +35,16 @@ export class HeaderComponent implements OnInit {
 
   routerMenu(key: string){
     this.sideNav.emit(key);
+  }
+
+  closeDate() {
+    this.sysService.closeDateSystem().subscribe(response => {
+      if (response.resultCode == 0) {
+        this.router.navigate(['/dashboard/home']);
+        this.utilsService.processResponseError(response, 'Đóng ngày thành công');
+      } else {
+        this.utilsService.processResponseError(response, 'Lỗi: ' + response.errorMsg);
+      }
+    });
   }
 }

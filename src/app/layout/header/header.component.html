@@ -14,6 +14,7 @@
             <button mat-menu-item (click)="routerMenu('customer-user')">Tài khoản KH</button>
             <button mat-menu-item (click)="routerMenu('cust-card')">Giỏ hàng KH</button>
             <button mat-menu-item (click)="routerMenu('cust-orders')">Đơn hàng KH</button>
+            <button mat-menu-item (click)="routerMenu('cust-orders-hist')">Đơn hàng KH - Lịch sử</button>
             <button mat-menu-item (click)="routerMenu('shipping')">Thông tin giao hàng</button>
         </mat-menu>
 
@@ -22,6 +23,7 @@
             <button mat-menu-item (click)="routerMenu('order')">Đặt hàng</button>
             <button mat-menu-item (click)="routerMenu('sys-card')">Giỏ hàng</button>
             <button mat-menu-item (click)="routerMenu('sys-orders')">Đơn hàng</button>
+            <button mat-menu-item (click)="routerMenu('sys-orders-hist')">Đơn hàng - Lịch sử</button>
         </mat-menu>
 
         <button class="menuItem" mat-button [matMenuTriggerFor]="afterMenu">Hệ thống</button>
@@ -34,6 +36,7 @@
             <mat-icon>account_circle</mat-icon>
         </button>
         <mat-menu #info="matMenu" yPosition="below">
+            <button mat-menu-item (click)="closeDate()"><mat-icon>close</mat-icon>Đóng ngày</button>
             <button mat-menu-item (click)="logout()"><mat-icon>logout</mat-icon>Logout</button>
         </mat-menu>
     </div>

@@ -43,6 +43,8 @@ import { ProductDescribeComponent } from './page/order/product-describe/product-
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { SysCardDialogComponent } from './page/sys-card/sys-card-dialog/sys-card-dialog.component';
 import { SysOrdersDialogComponent } from './page/sys-orders/sys-orders-dialog/sys-orders-dialog.component';
+import { CustOrdersHistComponent } from './page/cust-orders-hist/cust-orders-hist.component';
+import { SysOrdersHistComponent } from './page/sys-orders-hist/sys-orders-hist.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +66,8 @@ import { SysOrdersDialogComponent } from './page/sys-orders/sys-orders-dialog/sy
     ProductDescribeComponent,
     SysCardDialogComponent,
     SysOrdersDialogComponent,
+    CustOrdersHistComponent,
+    SysOrdersHistComponent,
   ],
   imports: [
     CommonModule,

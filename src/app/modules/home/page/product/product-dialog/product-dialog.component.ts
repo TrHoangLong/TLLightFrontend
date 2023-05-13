@@ -77,7 +77,7 @@ export class ProductDialogComponent implements OnInit {
         this.description = response.data.description;
         this.quantity = response.data.quantity;
         this.status = this.getStatus(response.data.status).value;
-        this.previews1 = 'assets/images/product/' + response.data.productImage;
+        this.previews1 = response.data.linkProductImage;
       });
     }
   }

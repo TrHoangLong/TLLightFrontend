@@ -1,1 +1,84 @@
-<p>cust-card works!</p>
+<span class="title">Danh sách giỏ hàng khách hàng</span>
+<br>
+<hr>
+
+<div class="content">
+    <form class="form">
+
+        <mat-form-field class="filter-value form-field" appearance="outline">
+            <mat-label>Tài khoản KH</mat-label>
+            <input matInput [(ngModel)]="custUserId" name="custUserId">
+        </mat-form-field>
+
+        <mat-form-field class="filter-value form-field" appearance="outline">
+            <mat-label>Trạng thái</mat-label>
+            <mat-select [(value)]="statusSelected" class="select">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let status of statusList" value="{{status.value}}">{{status.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <button mat-raised-button class="btn" (click)="search()">
+            <mat-icon>search</mat-icon>Tìm kiếm
+        </button>
+    </form>
+
+    <br>
+    <br>
+
+    <div class="example-container mat-elevation-z8 table">
+        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+            <ng-container matColumnDef="custUserId">
+                <th class="md-column id" mat-header-cell *matHeaderCellDef mat-sort-header>Tài khoản KH</th>
+                <td class="md-column id" mat-cell *matCellDef="let element">{{ element.custUserId}}</td>
+                <td class="md-column id" mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="custCartId">
+                <th class="md-column " mat-header-cell *matHeaderCellDef mat-sort-header>Mã giỏ hàng</th>
+                <td class="md-column name" mat-cell *matCellDef="let element">{{ element.custCartId}}</td>
+                <td class="md-column name" mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="productName">
+                <th class="md-column " mat-header-cell *matHeaderCellDef mat-sort-header>Sản phẩm</th>
+                <td class="md-column name" mat-cell *matCellDef="let element">{{ element.productName}}
+                </td>
+                <td class="md-column name" mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="quantity">
+                <th class="md-column id" mat-header-cell *matHeaderCellDef mat-sort-header>Số lượng</th>
+                <td class="md-column id" mat-cell *matCellDef="let element">{{ element.quantity}}</td>
+                <td class="md-column id" mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="productPrice">
+                <th class="md-column email" mat-header-cell *matHeaderCellDef mat-sort-header>Giá bán</th>
+                <td class="md-column email" mat-cell *matCellDef="let element">{{ element.productPrice}}</td>
+                <td class="md-column email" mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="totalCart">
+                <th class="md-column address" mat-header-cell *matHeaderCellDef mat-sort-header>Tổng tiền</th>
+                <td class="md-column address" mat-cell *matCellDef="let element">{{ element.totalCart}}</td>
+                <td class="md-column address" mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+                <th class="xs-column " mat-header-cell *matHeaderCellDef mat-sort-header>Trạng thái</th>
+                <td class="xs-column name" mat-cell *matCellDef="let element">{{getStatus(element.status).name}}
+                </td>
+                <td class="xs-column name" mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true;"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr>
+
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" style="text-align: center;" colspan="17">Không tồn tại dữ liệu</td>
+            </tr>
+        </table>
+    </div>
+</div>

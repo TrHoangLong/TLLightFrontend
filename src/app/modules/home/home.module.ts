@@ -45,6 +45,9 @@ import { SysCardDialogComponent } from './page/sys-card/sys-card-dialog/sys-card
 import { SysOrdersDialogComponent } from './page/sys-orders/sys-orders-dialog/sys-orders-dialog.component';
 import { CustOrdersHistComponent } from './page/cust-orders-hist/cust-orders-hist.component';
 import { SysOrdersHistComponent } from './page/sys-orders-hist/sys-orders-hist.component';
+import { CustomerUserDialogComponent } from './page/customer-user/customer-user-dialog/customer-user-dialog.component';
+import { CustCartDialogComponent } from './page/cust-card/cust-cart-dialog/cust-cart-dialog.component';
+import { CustOrdersDialogComponent } from './page/cust-orders/cust-orders-dialog/cust-orders-dialog.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +71,9 @@ import { SysOrdersHistComponent } from './page/sys-orders-hist/sys-orders-hist.c
     SysOrdersDialogComponent,
     CustOrdersHistComponent,
     SysOrdersHistComponent,
+    CustomerUserDialogComponent,
+    CustCartDialogComponent,
+    CustOrdersDialogComponent,
   ],
   imports: [
     CommonModule,

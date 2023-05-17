@@ -1,3 +1,86 @@
-<div>
-    <p>home</p>
+<div class="wrapper">
+    <div class="box1">
+        <p>Danh sách loại sản phẩm</p>
+        <div class="example-container table cateTable">
+            <table mat-table [dataSource]="dataSourceCate">
+                <ng-container matColumnDef="categoryName">
+                    <th class="md-column " mat-header-cell *matHeaderCellDef mat-sort-header>Loại sản phẩm</th>
+                    <td class="md-column name" mat-cell *matCellDef="let element">{{ element.categoryName}}</td>
+                </ng-container>
+    
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsCate; sticky: true;"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsCate;"></tr>
+    
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" style="text-align: center;" colspan="17">Không tồn tại dữ liệu</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="box2">
+        <mat-card class="demo-inline-calendar-card">
+            <mat-calendar></mat-calendar>
+          </mat-card>
+    </div>
+    <div class="box3">
+        <p>Danh sách đơn hàng của khách hàng</p>
+        <div class="example-container table proTable">
+            <table mat-table [dataSource]="dataSourceOrd">
+                <ng-container matColumnDef="custOrderDate">
+                    <th class="md-column" mat-header-cell *matHeaderCellDef mat-sort-header>Ngày</th>
+                    <td class="md-column" mat-cell *matCellDef="let element">{{ element.custOrderDate | date: 'dd/MM/yyyy'}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="custOrderId">
+                    <th class="md-column proColumn" mat-header-cell *matHeaderCellDef mat-sort-header>Mã ĐH</th>
+                    <td class="md-column proColumn" mat-cell *matCellDef="let element">{{ element.custOrderId}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="custUserId">
+                    <th class="md-column proColumn" mat-header-cell *matHeaderCellDef mat-sort-header>Khách hàng</th>
+                    <td class="md-column proColumn" mat-cell *matCellDef="let element">{{ element.custUserId}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="orderStatus">
+                    <th class="md-column proColumn" mat-header-cell *matHeaderCellDef mat-sort-header>Trạng thái</th>
+                    <td class="md-column proColumn" mat-cell *matCellDef="let element">{{ getStatus(element.orderStatus).name }}</td>
+                </ng-container>
+    
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsOrd; sticky: true;"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsOrd;"></tr>
+    
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" style="text-align: center;" colspan="17">Không tồn tại dữ liệu</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="box4">
+        <p>Danh sách sản phẩm vào số lượng</p>
+        <div class="example-container table proTable">
+            <table mat-table [dataSource]="dataSourcePro">
+                <ng-container matColumnDef="productName">
+                    <th class="md-column" mat-header-cell *matHeaderCellDef mat-sort-header>Tên sản phẩm</th>
+                    <td class="md-column" mat-cell *matCellDef="let element">{{ element.productName}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="productPrice">
+                    <th class="md-column proColumn" mat-header-cell *matHeaderCellDef mat-sort-header>Giá bán</th>
+                    <td class="md-column proColumn" mat-cell *matCellDef="let element">{{ element.productPrice | number: '1.0-0'}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="quantity">
+                    <th class="md-column proColumn" mat-header-cell *matHeaderCellDef mat-sort-header>Số lượng tồn</th>
+                    <td class="md-column proColumn" mat-cell *matCellDef="let element">{{ element.quantity}}</td>
+                </ng-container>
+    
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsPro; sticky: true;"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsPro;"></tr>
+    
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" style="text-align: center;" colspan="17">Không tồn tại dữ liệu</td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </div>

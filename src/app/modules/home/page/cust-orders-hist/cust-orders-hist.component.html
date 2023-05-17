@@ -1,1 +1,115 @@
-<p>cust-orders-hist works!</p>
+<span class="title">Danh sách đơn hàng của KH - Lịch sử</span>
+<br>
+<hr>
+
+<div class="content">
+    <form class="form">
+
+        <mat-form-field class="filter-value form-field" appearance="outline">
+            <mat-label>Tài khoản</mat-label>
+            <input matInput [(ngModel)]="custUserId" name="custUserId">
+        </mat-form-field>
+
+        <mat-form-field class="filter-value form-field" appearance="outline">
+            <mat-label>Sản phẩm</mat-label>
+            <mat-select [(value)]="productSelected" class="select">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let product of productList"
+                    value="{{product.productId}}">{{product.productName}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="filter-value form-field" appearance="outline">
+            <mat-label>Trạng thái</mat-label>
+            <mat-select [(value)]="orderStatusSelected" class="select">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let status of statusList" value="{{status.value}}">{{status.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <button mat-raised-button class="btn" (click)="search()">
+            <mat-icon>search</mat-icon>Tìm kiếm
+        </button>
+    </form>
+
+    <br>
+    <br>
+
+    <div class="example-container mat-elevation-z8 table">
+        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+            <ng-container matColumnDef="custOrderDate">
+                <th class="md-column name" mat-header-cell *matHeaderCellDef mat-sort-header>Ngày đặt hàng</th>
+                <td class="md-column name" mat-cell *matCellDef="let element">{{ element.custOrderDate| date:
+                    'dd/MM/yyyy'}}</td>
+                <td class="md-column name" mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="custOrderId">
+                <th class="md-column name" mat-header-cell *matHeaderCellDef mat-sort-header>Mã đơn hàng</th>
+                <td class="md-column name" mat-cell *matCellDef="let element">{{ element.custOrderId}}</td>
+                <td class="md-column name" mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="custUserId">
+                <th class="xs-column name" mat-header-cell *matHeaderCellDef mat-sort-header>Tài khoản</th>
+                <td class="xs-column name" mat-cell *matCellDef="let element">{{element.custUserId}}
+                </td>
+                <td class="xs-column name" mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="orderStatus">
+                <th class="md-column name" mat-header-cell *matHeaderCellDef mat-sort-header>Trạng thái đơn hàng</th>
+                <td class="md-column name" mat-cell *matCellDef="let element">{{ getStatus(element.orderStatus).name}}
+                </td>
+                <td class="md-column name" mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="productName">
+                <th class="md-column name" mat-header-cell *matHeaderCellDef mat-sort-header>Sản phẩm</th>
+                <td class="md-column name" mat-cell *matCellDef="let element">{{ element.productName}}</td>
+                <td class="md-column name" mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="quantity">
+                <th class="xs-column name" mat-header-cell *matHeaderCellDef mat-sort-header>Số lượng đặt</th>
+                <td class="xs-column name" mat-cell *matCellDef="let element">{{element.quantity}}
+                </td>
+                <td class="xs-column name" mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="productPrice">
+                <th class="md-column name" mat-header-cell *matHeaderCellDef mat-sort-header>Giá sản phẩm</th>
+                <td class="md-column name" mat-cell *matCellDef="let element">{{ element.productPrice}}</td>
+                <td class="md-column name" mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="totalPrice">
+                <th class="xs-column name" mat-header-cell *matHeaderCellDef mat-sort-header>Giá trị đơn hàng</th>
+                <td class="xs-column name" mat-cell *matCellDef="let element">{{element.totalPrice}}
+                </td>
+                <td class="xs-column name" mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="updatedUserId">
+                <th class="md-column name" mat-header-cell *matHeaderCellDef mat-sort-header>Người cập nhật</th>
+                <td class="md-column name" mat-cell *matCellDef="let element">{{ element.updatedUserId}}</td>
+                <td class="md-column name" mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="updatedTime">
+                <th class="xs-column name" mat-header-cell *matHeaderCellDef mat-sort-header>Thời gian cập nhật</th>
+                <td class="xs-column name" mat-cell *matCellDef="let element">{{element.updatedTime| date: 'dd/MM/yyyy HH:mm:ss '}} </td>
+                <td class="xs-column name" mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true;"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr>
+
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" style="text-align: center;" colspan="17">Không tồn tại dữ liệu</td>
+            </tr>
+        </table>
+    </div>
+
+</div>

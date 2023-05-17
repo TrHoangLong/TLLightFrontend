@@ -1,16 +1,68 @@
-::ng-deep .success{
-    color:white;
+::ng-deep .success {
+    color: white;
     background: #3f51b5;
 }
-::ng-deep .fail{
-    color:white;
+
+::ng-deep .fail {
+    color: white;
     background: #f44336;
 }
-.header{
+
+.header {
     color: white;
     padding: 10px;
     text-decoration: none;
 }
-button{
+
+button {
     margin: 15px;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 300px;
+    gap: 20px;
+}
+
+.box2 {
+    grid-column-start: 4;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    position: relative;
+}
+
+.box3 {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    position: relative;
+}
+
+table {
+    min-width: 100%;
+    height: 100%;
+}
+
+th {
+    position: fixed;
+    background-color: whitesmoke;
+}
+
+
+.cateTable {
+    height: 250px;
+    overflow: auto;
+}
+
+
+.proTable {
+    height: 250px;
+    overflow: auto;
+}
+
+.proColumn {
+    text-align: center;
 }

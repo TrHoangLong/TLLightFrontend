@@ -1,1 +1,25 @@
-<p>cust-orders-dialog works!</p>
+<h1 mat-dialog-title>{{title}}</h1>
+
+<div mat-dialog-content>
+    <p *ngIf="action !== ACTION_UPDATE_STATUS">{{message}}</p>
+
+    <mat-grid-list cols="1" rowHeight="3:1" *ngIf="action === ACTION_UPDATE_STATUS">
+        <mat-grid-tile>
+            <mat-form-field appearance="outline">
+                <mat-label>Trạng thái</mat-label>
+                <mat-select [(value)]="orderStatus" class="select">
+                    <mat-option>None</mat-option>
+                    <mat-option value="1">Chuẩn bị hàng </mat-option>
+                    <mat-option value="2">Đang giao hàng</mat-option>
+                    <mat-option value="3">Đã nhận hàng</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+</div>
+
+<div mat-dialog-actions align="end">
+    <button mat-stroked-button class="btnNo" (click)="onNoClick()">Đóng</button>
+    <button mat-raised-button (click)="onYesClick()" class="btnYes" color="primary">{{titleYes}}</button>
+</div>

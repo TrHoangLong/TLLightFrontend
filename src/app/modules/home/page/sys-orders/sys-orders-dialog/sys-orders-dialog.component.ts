@@ -71,41 +71,47 @@ export class SysOrdersDialogComponent implements OnInit {
     if (this.action === this.ACTION_UPDATE_STATUS) {
       const payload = [];
 
-      this.orderList.forEach(response => {
-        payload.push({
-          sysOrderDate: response.sysOrderDate,
-          sysOrderId: response.sysOrderId,
-          orderStatus: this.orderStatus
+      if (this.orderList.size() === 0) {
+        this.utilsService.processResponseError('', 'Chưa chọn đơn hàng nào để cập nhật');
+      } else {
+        this.orderList.forEach(response => {
+          payload.push({
+            sysOrderDate: response.sysOrderDate,
+            sysOrderId: response.sysOrderId,
+            orderStatus: this.orderStatus
+          });
         });
-      });
 
-      this.sysService.updateStatusSysOrder(payload).subscribe(response => {
-        if (response.resultCode === 0) {
-          this.dialogRef.close();
-          this.utilsService.processResponseError(response, 'Cập nhật trạng thái thành công');
-        } else {
-          this.utilsService.processResponseError(response, 'Lỗi: ' + response.errorMsg);
-        }
-      });
-
+        this.sysService.updateStatusSysOrder(payload).subscribe(response => {
+          if (response.resultCode === 0) {
+            this.dialogRef.close();
+            this.utilsService.processResponseError(response, 'Cập nhật trạng thái thành công');
+          } else {
+            this.utilsService.processResponseError(response, 'Lỗi: ' + response.errorMsg);
+          }
+        });
+      }
     } else if (this.action === this.ACTION_CANCEL) {
       const payload = [];
-
-      this.orderList.forEach(response => {
-        payload.push({
-          sysOrderDate: response.sysOrderDate,
-          sysOrderId: response.sysOrderId
+      if (this.orderList.size() === 0) {
+        this.utilsService.processResponseError('', 'Chưa chọn đơn hàng nào để cập nhật');
+      } else {
+        this.orderList.forEach(response => {
+          payload.push({
+            sysOrderDate: response.sysOrderDate,
+            sysOrderId: response.sysOrderId
+          });
         });
-      });
 
-      this.sysService.cancelSysOrder(payload).subscribe(response => {
-        if (response.resultCode === 0) {
-          this.dialogRef.close();
-          this.utilsService.processResponseError(response, 'Hủy đơn hàng thành công');
-        } else {
-          this.utilsService.processResponseError(response, 'Lỗi: ' + response.errorMsg);
-        }
-      });
+        this.sysService.cancelSysOrder(payload).subscribe(response => {
+          if (response.resultCode === 0) {
+            this.dialogRef.close();
+            this.utilsService.processResponseError(response, 'Hủy đơn hàng thành công');
+          } else {
+            this.utilsService.processResponseError(response, 'Lỗi: ' + response.errorMsg);
+          }
+        });
+      }
     }
   }
 

@@ -17,8 +17,6 @@ export class ContentLayoutComponent implements OnInit {
     private authService: AuthService) { }
 
   selectedMenu: string;
-  sideNavOpen = true;
-  hasBackdrop = false;
 
   ngOnInit(): void {
   }

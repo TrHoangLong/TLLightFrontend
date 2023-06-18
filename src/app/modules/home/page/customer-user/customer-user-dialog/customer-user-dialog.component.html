@@ -23,11 +23,9 @@
         <mat-grid-tile [colspan]="1" [rowspan]="1">
             <mat-form-field appearance="outline">
                 <mat-label>Ngày sinh</mat-label>
-                <div fxLayout="row" fxLayoutAlign="space-around center" class="date">
                     <input class="inputDate" matInput [matDatepicker]="picker1" [(ngModel)]="birthday" name="birthday">
                     <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
                     <mat-datepicker #picker1></mat-datepicker>
-                </div>
             </mat-form-field>
         </mat-grid-tile>
 

@@ -51,7 +51,7 @@ export class CustOrdersDialogComponent implements OnInit {
     this.statusList = CUST_ORDER_STATUS;
     if (this.action === this.ACTION_UPDATE_STATUS) {
       this.orderList = data.data;
-    } else {
+    } else if (this.action === this.ACTION_CANCEL || this.action === this.ACTION_CONFIRM_CANCEL) {
       this.custOrderDate = data.data.custOrderDate;
       this.custOrderId = data.data.custOrderId;
     }
@@ -80,26 +80,22 @@ export class CustOrdersDialogComponent implements OnInit {
   onYesClick() {
     if (this.action === this.ACTION_UPDATE_STATUS) {
       const payload = [];
-      if (this.orderList.size() === 0) {
-        this.utilsService.processResponseError('', 'Chưa chọn đơn hàng nào để cập nhật');
-      } else {
-        this.orderList.forEach(response => {
-          payload.push({
-            custOrderDate: response.custOrderDate,
-            custOrderId: response.custOrderId,
-            orderStatus: this.orderStatus
-          });
+      this.orderList.forEach(response => {
+        payload.push({
+          custOrderDate: response.custOrderDate,
+          custOrderId: response.custOrderId,
+          orderStatus: this.orderStatus
         });
+      });
 
-        this.custService.updateStatusCustOrders(payload).subscribe(response => {
-          if (response.resultCode === 0) {
-            this.dialogRef.close();
-            this.utilsService.processResponseError(response, 'Cập nhật trạng thái thành công');
-          } else {
-            this.utilsService.processResponseError(response, 'Lỗi: ' + response.errorMsg);
-          }
-        });
-      }
+      this.custService.updateStatusCustOrders(payload).subscribe(response => {
+        if (response.resultCode === 0) {
+          this.dialogRef.close();
+          this.utilsService.processResponseError(response, 'Cập nhật trạng thái thành công');
+        } else {
+          this.utilsService.processResponseError(response, 'Lỗi: ' + response.errorMsg);
+        }
+      });
     } else if (this.action === this.ACTION_CANCEL) {
       const payload = {
         custOrderDate: this.custOrderDate,
@@ -120,7 +116,7 @@ export class CustOrdersDialogComponent implements OnInit {
         custOrderId: this.custOrderId
       }
 
-      this.custService.updateStatusCustOrders(payload).subscribe(response => {
+      this.custService.cancelConfirmCustOrders(payload).subscribe(response => {
         if (response.resultCode === 0) {
           this.dialogRef.close();
           this.utilsService.processResponseError(response, 'Đồng ý hủy thành công');

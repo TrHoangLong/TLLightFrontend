@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { RoleService } from 'src/app/share/service/role.service';
 import { UtilsService } from 'src/app/share/service/utils.service';
 import { ProductService } from 'src/app/core/service/product.service';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Product } from 'src/app/data/schema/product/product';
 import { ProductZoomImageComponent } from '../product/product-dialog/product-zoom-image/product-zoom-image.component';
 import { ProductDescribeComponent } from './product-describe/product-describe.component';
@@ -24,39 +25,47 @@ export class OrderComponent implements OnInit {
 
   previews1: string = 'assets/images/no_picture.jpeg';
 
+  offset = 0;
+  limit = 8;
+
+  totalRow: number;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   constructor(private dialog: MatDialog,
     private roleService: RoleService,
     private utilsService: UtilsService,
     private productSevice: ProductService) { }
 
   ngOnInit(): void {
-    this.search();
     this.getAllCategory();
-    this.getAllProduct();
+    this.getAllProduct(this.limit, this.limit * this.offset);
   }
 
-  search() {
+  search(event: PageEvent) {
+    if (event) { // next page
+      this.limit = event.pageSize;
+      this.offset = event.pageIndex;
+    } else {
+      this.limit = 8;
+      this.offset = 0;
+    }
+
+    this.getAllProduct(this.limit, this.limit * this.offset)
+  }
+
+  getAllProduct(_limit: number, _offset: number) {
     const payload = {
       productId: this.productId,
       categoryId: this.categoryId,
-      status: 1
+      status: 1,
+      offset: _offset,
+      limit: _limit
     }
-
-    this.productSevice.getProduct(payload).subscribe(response => {
-      if (response.resultCode == 0) {
-        this.productListSearch = response.data;
-      } else {
-        this.utilsService.processResponseError(response, 'Lỗi: ' + response.errorMsg);
-      }
-    });
-  }
-
-  getAllProduct() {
-    const payload = {};
-
     this.productSevice.getProduct(payload).subscribe(response => {
       if (response.resultCode == 0) {
         this.productList = response.data;
+        this.productListSearch = response.data;
+        this.totalRow = response.data[0].totalRows;
       } else {
         this.utilsService.processResponseError(response, 'Lỗi: ' + response.errorMsg);
       }
@@ -91,7 +100,6 @@ export class OrderComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.search();
     });
   }
 
@@ -105,7 +113,6 @@ export class OrderComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.search();
     });
   }
 
@@ -119,7 +126,6 @@ export class OrderComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.search();
     });
   }
 }

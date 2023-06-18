@@ -50,7 +50,7 @@
                 <td style="text-align: center;" class="checkbox-column" mat-cell *matCellDef="let row">
                     <mat-checkbox (click)="$event.stopPropagation()" (change)="onChangeSelected(row)"
                         [checked]="selection.isSelected(row)"
-                        [disabled]="row.orderStatus==5 || row.orderStatus==9 || row.cancelStatus == 2 || row.orderStatus ==3 || row.remainQty == 0">
+                        [disabled]="row.orderStatus==3 || row.orderStatus==9">
                     </mat-checkbox>
                 </td>
                 <td class="xs-column date" mat-footer-cell *matFooterCellDef> </td>

@@ -5,11 +5,7 @@
 }
 
 .btnYes {
-    background-color: #bdab45;
+    background-color: #11bf54;
     color: whitesmoke;
 }
 
-mat-form-field {
-    margin: 30px;
-    width: 200px;
-}

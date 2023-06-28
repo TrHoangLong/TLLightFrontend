@@ -12,7 +12,7 @@ import { UtilsService } from 'src/app/share/service/utils.service';
 import { ProductService } from 'src/app/core/service/product.service';
 import { SysService } from 'src/app/core/service/sys.service';
 import { CustService } from 'src/app/core/service/cust.service';
-import { CUST_USER_STATUS } from 'src/app/core/constants/customer';
+import { CUST_USER_STATUS, CUST_ORDER_STATUS } from 'src/app/core/constants/customer';
 
 @Component({
   selector: 'app-home',
@@ -42,6 +42,7 @@ export class HomeComponent implements OnInit {
   dataSourceOrd: any;
 
   statusList: any;
+  orderstatusList: any;
 
   constructor(private router: Router,
     private http: HttpClient,
@@ -51,6 +52,7 @@ export class HomeComponent implements OnInit {
     private sysService: SysService,
     private custService: CustService) {
     this.statusList = CUST_USER_STATUS;
+    this.orderstatusList = CUST_ORDER_STATUS;
   }
 
   ngOnInit(): void {
@@ -101,6 +103,26 @@ export class HomeComponent implements OnInit {
       }
     } else {
       for (const data of this.statusList) {
+        if (data.data === status) {
+          return data;
+        }
+      }
+    }
+    return '';
+  }
+
+  getOrderStatus(status: any): any {
+    if (this.orderstatusList == undefined) {
+      return '';
+    }
+    if (typeof status === 'string') {
+      for (const data of this.orderstatusList) {
+        if (data.value === status) {
+          return data;
+        }
+      }
+    } else {
+      for (const data of this.orderstatusList) {
         if (data.data === status) {
           return data;
         }

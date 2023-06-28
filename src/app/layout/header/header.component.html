@@ -1,6 +1,6 @@
 <mat-toolbar class="header">
     <div class="col home">
-        <img class="logoImage" src="../../../assets/images/logheader.svg" alt="" (click)="routerMenu('home')">
+        <img class="logoImage" [src]="linkImage + 'logheader.svg'" alt="" (click)="routerMenu('home')">
     </div>
     <div class="col-9 menu">
         <button class="menuItem" mat-button [matMenuTriggerFor]="aboveMenu">Sản phẩm</button>

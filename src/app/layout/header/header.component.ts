@@ -4,6 +4,7 @@ import { RoleService } from 'src/app/share/service/role.service';
 import { SysService } from 'src/app/core/service/sys.service';
 import { Router } from '@angular/router';
 import { UtilsService } from 'src/app/share/service/utils.service';
+import { LINK_IMAGE } from 'src/app/core/constants/api';
 
 @Component({
   selector: 'app-header',
@@ -15,11 +16,15 @@ export class HeaderComponent implements OnInit {
 
   sideNavClosed = true;
 
+  linkImage: string;
+
   constructor(private router: Router,
     private roleService: RoleService,
     private authService: AuthService,
     private sysService: SysService,
-    private utilsService: UtilsService) { }
+    private utilsService: UtilsService) {
+      this.linkImage = LINK_IMAGE;
+     }
 
   ngOnInit(): void {
   }

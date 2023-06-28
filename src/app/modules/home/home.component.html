@@ -43,7 +43,7 @@
 
                 <ng-container matColumnDef="orderStatus">
                     <th class="md-column proColumn" mat-header-cell *matHeaderCellDef mat-sort-header>Trạng thái</th>
-                    <td class="md-column proColumn" mat-cell *matCellDef="let element">{{ getStatus(element.orderStatus).name }}</td>
+                    <td class="md-column proColumn" mat-cell *matCellDef="let element">{{ getOrderStatus(element.orderStatus).name }}</td>
                 </ng-container>
     
                 <tr mat-header-row *matHeaderRowDef="displayedColumnsOrd; sticky: true;"></tr>

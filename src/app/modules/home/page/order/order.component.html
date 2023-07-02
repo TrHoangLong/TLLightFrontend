@@ -1,6 +1,3 @@
-<span class="title">Đặt hàng</span>
-<br>
-<br>
 <div class="content">
     <mat-sidenav-container>
         <mat-sidenav mode="side" opened>
@@ -8,7 +5,7 @@
             <div>
                 <mat-form-field appearance="outline">
                     <mat-label>Loại sản phẩm</mat-label>
-                    <mat-select [(value)]="categoryId" class="select">
+                    <mat-select [(value)]="categoryId" class="select" >
                         <mat-option>None</mat-option>
                         <mat-option *ngFor="let category of categoryList"
                             value="{{category.categoryId}}">{{category.categoryName}}</mat-option>
@@ -26,12 +23,14 @@
                     <mat-card class="example-card">
                         <mat-card-header style="height: 30%;">
                             <mat-card-title style="font-size: 16px;">{{product.productName}}</mat-card-title>
-                            <mat-card-subtitle>Giá bán: {{product.productPrice | number: '1.0-0'}} - Số lượng: {{product.quantity}}</mat-card-subtitle>
-                            <mat-card-subtitle><mat-icon style="cursor: pointer;" (click)="descriptionDetail(product.description)">visibility</mat-icon></mat-card-subtitle>
+                            <mat-card-subtitle>Giá bán: {{product.productPrice | number: '1.0-0'}} - Số lượng:
+                                {{product.quantity}}</mat-card-subtitle>
+                            <mat-card-subtitle><mat-icon style="cursor: pointer;"
+                                    (click)="descriptionDetail(product.description)">visibility</mat-icon></mat-card-subtitle>
                         </mat-card-header>
                         <div class="boxImage">
-                            <img (click)="openImageZoom(product.linkProductImage)"
-                                [src]="product.linkProductImage" class="preview1" class="image">
+                            <img (click)="openImageZoom(product.linkProductImage)" [src]="product.linkProductImage"
+                                class="preview1" class="image">
                         </div>
                         <br>
                         <div class="boxButton">
@@ -44,7 +43,7 @@
                     </mat-card>
                 </mat-grid-tile>
             </mat-grid-list>
-            <mat-paginator [length]="totalRow" [pageSize]="limit" (page)="search($event)" >
+            <mat-paginator [length]="totalRow" [pageSize]="limit" (page)="search($event)">
             </mat-paginator>
         </mat-sidenav-content>
     </mat-sidenav-container>

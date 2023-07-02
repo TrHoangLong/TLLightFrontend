@@ -1,30 +1,28 @@
-.title {
-    font-size: 24px;
-}
 
 .content {
-    height: 100%;
     display: flex;
     justify-content: center;
-}
-
-mat-form-field {
-    width: 100%;
+    align-items: center;
 }
 
 mat-sidenav-container {
-    width: 100%;
+    width: 97%;
+    height: 70%;
+}
+
+.mat-form-field {
+    padding: 0;
+    margin: 0;
+    width: 95%;
 }
 
 mat-sidenav {
-    width: 13%;
-    padding: 15px;
+    width: 17%;
 }
 
 mat-sidenav-content {
-    width: 87%;
+    width: 83%;
     background-color: white;
-    max-height: 100%;
 }
 
 

@@ -87,6 +87,27 @@
                 <td class="xs-column name" mat-footer-cell *matFooterCellDef> </td>
             </ng-container>
 
+            <ng-container matColumnDef="custName">
+                <th class="xs-column name" mat-header-cell *matHeaderCellDef mat-sort-header>Tên người nhận</th>
+                <td class="xs-column name" mat-cell *matCellDef="let element">{{element.custName}}
+                </td>
+                <td class="xs-column name" mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="mobileNo">
+                <th class="xs-column name" mat-header-cell *matHeaderCellDef mat-sort-header>Số điện thoại người nhận</th>
+                <td class="xs-column name" mat-cell *matCellDef="let element">{{element.mobileNo}}
+                </td>
+                <td class="xs-column name" mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="address">
+                <th class="xs-column name" mat-header-cell *matHeaderCellDef mat-sort-header>Địa chỉ nhận hàng</th>
+                <td class="xs-column name" mat-cell *matCellDef="let element">{{element.address}}
+                </td>
+                <td class="xs-column name" mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
             <ng-container matColumnDef="orderStatus">
                 <th class="md-column name" mat-header-cell *matHeaderCellDef mat-sort-header>Trạng thái đơn hàng</th>
                 <td class="md-column name" mat-cell *matCellDef="let element">{{ getStatus(element.orderStatus).name}}</td>

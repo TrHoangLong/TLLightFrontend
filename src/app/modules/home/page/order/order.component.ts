@@ -90,12 +90,12 @@ export class OrderComponent implements OnInit {
     });
   }
 
-  descriptionDetail(description: any) {
+  descriptionDetail(productId: any) {
     const dialogRef = this.dialog.open(ProductDescribeComponent, {
       width: '800px',
       data: {
         action: 'detail',
-        data: description
+        data: productId
       }
     });
 

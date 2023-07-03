@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dial
 import { UtilsService } from 'src/app/share/service/utils.service';
 import { RoleService } from 'src/app/share/service/role.service';
 import { SysService } from 'src/app/core/service/sys.service';
+import { ProductService } from 'src/app/core/service/product.service';
 import { OrderComponent } from '../order.component';
 
 @Component({
@@ -38,7 +39,8 @@ export class ProductDescribeComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private roleService: RoleService,
     private utilsService: UtilsService,
-    private sysService: SysService) {
+    private sysService: SysService,
+    private productSevice: ProductService) {
     this.action = data.action;
 
     if (this.action === this.ACTION_DETAIL) {
@@ -52,7 +54,7 @@ export class ProductDescribeComponent implements OnInit {
     }
 
     if (this.action === this.ACTION_DETAIL) {
-      this.description = data.data;
+      this.getProduct(data.data);
     } else if (this.action !== this.ACTION_DETAIL) {
       this.productId = data.data.productId;
       this.productPrice = data.data.productPrice;
@@ -104,9 +106,19 @@ export class ProductDescribeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getDescription(description: string): any {
-    let result = description.split(';')
-    return result
+  getProduct(productId) {
+    const payload = {
+      productId: productId,
+      offset: 0,
+      limit: 8
+    }
+    this.productSevice.getProduct(payload).subscribe(response => {
+      if (response.resultCode == 0) {
+        this.product = response.data[0];
+      } else {
+        this.utilsService.processResponseError(response, 'Lỗi: ' + response.errorMsg);
+      }
+    });
   }
 
 }

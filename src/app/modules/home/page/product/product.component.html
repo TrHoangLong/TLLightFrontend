@@ -80,10 +80,40 @@
                 <td class="md-column name" mat-footer-cell *matFooterCellDef> </td>
             </ng-container>
 
-            <ng-container matColumnDef="description">
-                <th class="md-column id description" mat-header-cell *matHeaderCellDef mat-sort-header>Mô tả</th>
-                <td class="md-column id description" mat-cell *matCellDef="let element"><p *ngFor="let item of getDescription(element.description)">{{item}}</p></td>
-                <td class="md-column id" mat-footer-cell *matFooterCellDef> </td>
+            <ng-container matColumnDef="wattage">
+                <th class="md-column " mat-header-cell *matHeaderCellDef mat-sort-header>Công suất</th>
+                <td class="md-column name" mat-cell *matCellDef="let element">{{ element.wattage}}</td>
+                <td class="md-column name" mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="material">
+                <th class="md-column " mat-header-cell *matHeaderCellDef mat-sort-header>Chất liệu</th>
+                <td class="md-column name" mat-cell *matCellDef="let element">{{ element.material}}</td>
+                <td class="md-column name" mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="battery">
+                <th class="md-column " mat-header-cell *matHeaderCellDef mat-sort-header>Dung lượng pin</th>
+                <td class="md-column name" mat-cell *matCellDef="let element">{{ element.battery}}</td>
+                <td class="md-column name" mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="batterySize">
+                <th class="md-column " mat-header-cell *matHeaderCellDef mat-sort-header>Kích thước pin</th>
+                <td class="md-column name" mat-cell *matCellDef="let element">{{ element.batterySize}}</td>
+                <td class="md-column name" mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="lightingTime">
+                <th class="md-column " mat-header-cell *matHeaderCellDef mat-sort-header>Thời lượng sáng</th>
+                <td class="md-column name" mat-cell *matCellDef="let element">{{ element.lightingTime}}</td>
+                <td class="md-column name" mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="chargingTime">
+                <th class="md-column " mat-header-cell *matHeaderCellDef mat-sort-header>Thời lượng sạc</th>
+                <td class="md-column name" mat-cell *matCellDef="let element">{{ element.chargingTime}}</td>
+                <td class="md-column name" mat-footer-cell *matFooterCellDef> </td>
             </ng-container>
 
             <ng-container matColumnDef="quantity">

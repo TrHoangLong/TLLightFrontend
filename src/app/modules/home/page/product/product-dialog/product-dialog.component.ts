@@ -29,7 +29,12 @@ export class ProductDialogComponent implements OnInit {
   categoryId: string;
   productName: string;
   productPrice: number;
-  description: string;
+  wattage: string;
+  material: string;
+  battery: string;
+  batterySize: string;
+  lightingTime: string;
+  chargingTime: string;
   quantity: number;
   status: number;
 
@@ -74,7 +79,12 @@ export class ProductDialogComponent implements OnInit {
         this.categoryId = response.data.categoryId;
         this.productName = response.data.productName;
         this.productPrice = response.data.productPrice;
-        this.description = response.data.description;
+        this.wattage = response.data.wattage;
+        this.material = response.data.material;
+        this.battery = response.data.battery;
+        this.batterySize = response.data.batterySize;
+        this.lightingTime = response.data.lightingTime;
+        this.chargingTime = response.data.chargingTime;
         this.quantity = response.data.quantity;
         this.status = this.getStatus(response.data.status).value;
         this.previews1 = response.data.linkProductImage;
@@ -163,7 +173,12 @@ export class ProductDialogComponent implements OnInit {
       categoryId: this.categoryId,
       productName: this.productName,
       productPrice: this.productPrice,
-      description: this.description,
+      wattage: this.wattage,
+      material: this.material,
+      battery: this.battery,
+      batterySize: this.batterySize,
+      lightingTime: this.lightingTime,
+      chargingTime: this.chargingTime,
       quantity: this.quantity,
       status: this.getStatus(this.status).data
     }

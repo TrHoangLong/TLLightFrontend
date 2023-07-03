@@ -51,12 +51,51 @@
           </mat-select>
         </mat-form-field>
       </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Công suất</mat-label>
+          <input matInput [(ngModel)]="wattage" required>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Chất liệu</mat-label>
+          <input matInput [(ngModel)]="material" required>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Dung lượng pin</mat-label>
+          <input matInput [(ngModel)]="battery" required>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Kích thước pin</mat-label>
+          <input matInput [(ngModel)]="batterySize" required>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Thời lượng sáng</mat-label>
+          <input matInput [(ngModel)]="lightingTime" required>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Thời lượng sạc</mat-label>
+          <input matInput [(ngModel)]="chargingTime" required>
+        </mat-form-field>
+      </mat-grid-tile>
+
+
     </mat-grid-list>
-    <mat-form-field appearance="outline" class="description">
-      <mat-label>Mô tả</mat-label>
-      <!-- <input matInput [(ngModel)]="description" required> -->
-      <textarea matInput [(ngModel)]="description" required></textarea>
-    </mat-form-field>
 
   </mat-sidenav>
   <mat-sidenav-content>

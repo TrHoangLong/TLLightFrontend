@@ -1,7 +1,12 @@
 <h1 mat-dialog-title>{{title}}</h1>
 
 <div *ngIf="action === ACTION_DETAIL">
-    <h3 *ngFor="let item of getDescription(description)">{{item}}</h3>
+    <h3>Công suất: {{product.wattage}}</h3>
+    <h3>Chất liệu: {{product.material}}</h3>
+    <h3>Dung lượng pin: {{product.battery}}</h3>
+    <h3>Kích thước pin: {{product.batterySize}}</h3>
+    <h3>Thời lượng sáng: {{product.lightingTime}}</h3>
+    <h3>Thời lượng sạc: {{product.chargingTime}}</h3>
 </div>
 
 <div *ngIf="action !== ACTION_DETAIL">

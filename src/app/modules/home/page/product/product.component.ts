@@ -26,7 +26,12 @@ export class ProductComponent implements OnInit {
     'categoryName', 
     'productName', 
     'productPrice',
-    'description',
+    'wattage',
+    'material',
+    'battery',
+    'batterySize',
+    'lightingTime',
+    'chargingTime',
     'quantity',
     'status', 
     'createdUserId', 
@@ -66,7 +71,9 @@ export class ProductComponent implements OnInit {
     const payload = {
       productId: this.productId,
       categoryId: this.categoryId,
-      status: this.getStatus(this.status).data
+      status: this.getStatus(this.status).data,
+      offset: 0,
+      limit: 0
     }
 
     this.productSevice.getProduct(payload).subscribe(response => {
@@ -79,7 +86,10 @@ export class ProductComponent implements OnInit {
   }
 
   getAllProduct() {
-    const payload = {};
+    const payload = {
+      offset: 0,
+      limit: 0
+    };
 
     this.productSevice.getProduct(payload).subscribe(response => {
       if (response.resultCode == 0) {
@@ -120,11 +130,6 @@ export class ProductComponent implements OnInit {
       }
     }
     return '';
-  }
-
-  getDescription(description: string): any {
-      let result = description.split(';')
-      return result
   }
 
   insert() {

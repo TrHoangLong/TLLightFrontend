@@ -5,7 +5,7 @@
             <div>
                 <mat-form-field appearance="outline">
                     <mat-label>Loại sản phẩm</mat-label>
-                    <mat-select [(value)]="categoryId" class="select" >
+                    <mat-select [(value)]="categoryId" class="select">
                         <mat-option>None</mat-option>
                         <mat-option *ngFor="let category of categoryList"
                             value="{{category.categoryId}}">{{category.categoryName}}</mat-option>
@@ -22,11 +22,14 @@
                 <mat-grid-tile *ngFor="let product of productListSearch">
                     <mat-card class="example-card">
                         <mat-card-header style="height: 30%;">
-                            <mat-card-title style="font-size: 16px;">{{product.productName}}</mat-card-title>
+                            <mat-card-title>
+                                <h3
+                                    style="font-weight: 500; width: 95%; height: 100%; display: flex; align-items: center; margin-bottom: 8px;">
+                                    {{product.productName}}</h3><mat-icon style="cursor: pointer; color: #11bf54;"
+                                    (click)="descriptionDetail(product.description)">visibility</mat-icon>
+                            </mat-card-title>
                             <mat-card-subtitle>Giá bán: {{product.productPrice | number: '1.0-0'}} - Số lượng:
                                 {{product.quantity}}</mat-card-subtitle>
-                            <mat-card-subtitle><mat-icon style="cursor: pointer;"
-                                    (click)="descriptionDetail(product.description)">visibility</mat-icon></mat-card-subtitle>
                         </mat-card-header>
                         <div class="boxImage">
                             <img (click)="openImageZoom(product.linkProductImage)" [src]="product.linkProductImage"

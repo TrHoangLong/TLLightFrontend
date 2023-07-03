@@ -54,7 +54,7 @@ mat-sidenav-content {
 }
 
 .boxButton {
-    height: 12%;
+    height: 14%;
     width: 100%;
     display: flex;
     justify-content: end;
@@ -64,5 +64,28 @@ mat-sidenav-content {
     border-color: #11bf54;
     border-style: solid;
     color: #11bf54;
+}
+
+mat-card-header {
+    align-items: center;
+}
+
+.mat-card-header .mat-card-title {
+    margin-bottom: 0;
+}
+
+.mat-typography h3 {
+    margin: 0 0 8px;
+}
+
+mat-icon {
+    align-items: center;
+}
+
+
+mat-card-title {
+    display: flex;
+    align-items: center;
+    height: 26%;
 }
 

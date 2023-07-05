@@ -63,29 +63,6 @@ export class CustOrdersComponent implements OnInit {
     this.search();
   }
 
-  isAllSelected(): boolean {
-    const numSelected = this.selection.selected.length;
-    const temp = this.dataSource.data.filter(row => {
-      return row.orderStatus !== 9 || row.orderStatus !== 8 || row.orderStatus !== 3;
-    });
-    let numRows = 0;
-    if (temp === undefined) {
-      return false; 
-    } else {
-      numRows = temp.length;
-    }
-
-    return numSelected === numRows;
-  }
-
-  masterToggle(): void {
-    this.isAllSelected() ? this.selection.clear() : this.dataSource.data.forEach(row => {
-      if (row.orderStatus !== 9 || row.orderStatus !== 8 || row.orderStatus !== 3) {
-        this.selection.select(row);
-      }
-    });
-  }
-
   onChangeSelected(element): void {
     this.selection.toggle(element);
   }
@@ -151,6 +128,7 @@ export class CustOrdersComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.search();
+      this.selection.clear();
     });
   }
 
@@ -165,6 +143,7 @@ export class CustOrdersComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.search();
+      this.selection.clear();
     });
   }
 
@@ -179,6 +158,7 @@ export class CustOrdersComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.search();
+      this.selection.clear();
     });
   }
 

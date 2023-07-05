@@ -23,10 +23,25 @@ export class HeaderComponent implements OnInit {
     private authService: AuthService,
     private sysService: SysService,
     private utilsService: UtilsService) {
-      this.linkImage = LINK_IMAGE;
-     }
+    this.linkImage = LINK_IMAGE;
+  }
 
   ngOnInit(): void {
+    this.checkLogin();
+  }
+
+  checkLogin() {
+    const token = {
+      token: this.roleService.getToken()
+    }
+
+    this.authService.checkLogin(token).subscribe(response => {
+      if (response.resultCode == 0) {
+
+      } else {
+        this.utilsService.processResponseError(response, 'Lỗi: ' + response.errorMsg);
+      }
+    });
   }
 
   logout() {
@@ -38,7 +53,7 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  routerMenu(key: string){
+  routerMenu(key: string) {
     this.sideNav.emit(key);
   }
 

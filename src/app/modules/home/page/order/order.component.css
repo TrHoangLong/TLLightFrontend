@@ -68,6 +68,7 @@ mat-sidenav-content {
 
 mat-card-header {
     align-items: center;
+    width: 100%;
 }
 
 .mat-card-header .mat-card-title {
@@ -85,7 +86,6 @@ mat-icon {
 
 mat-card-title {
     display: flex;
-    align-items: center;
     height: 26%;
 }
 

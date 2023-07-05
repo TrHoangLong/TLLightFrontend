@@ -31,6 +31,7 @@ export class AuthService {
     };
     return this.http.post<Response>(this.loginURL, user)
   }
+
   logout(token: string): Observable<any> {
     const header = {
       'content-type': 'application/json',
@@ -38,5 +39,9 @@ export class AuthService {
     };
     this.httpOptions.headers = new HttpHeaders(header);
     return this.http.post<string>(this.logoutURL, {}, this.httpOptions);
+  }
+
+  checkLogin(token: any): Observable<any> {
+    return this.http.post<Response>(HOST_AUTH + 'checklogin', token);
   }
 }

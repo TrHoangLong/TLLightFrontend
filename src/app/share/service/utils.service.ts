@@ -28,10 +28,12 @@ export class UtilsService {
           if (isSave === 'false') {
               this.roleService.removeLogin();
           }
+
+          this.router.navigate(['/auth/login']);
+
           this.authService.logout(token).subscribe(data => {
               this.roleService.clearToken();
               this.roleService.clearRole();
-              this.router.navigate(['/auth/login']);
           });
       } else if (response && response.errorCode == null && response.resultCode != -1) {
           this.snackBar.openFromComponent(SnackBarMessagesComponent, {
